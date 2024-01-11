@@ -51,3 +51,12 @@ fun comprovarTipus(deQue: String, vararg tipusValids: String): String {
     } while (!valid)
     return tipus
 }
+
+fun printMatrix(array:Array<Array<Int>>){
+    for (i in array.indices) {
+        for (j in array[i].indices) {
+            print("${array[i][j]} ")
+        }
+        println()
+    }
+}
