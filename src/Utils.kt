@@ -51,6 +51,25 @@ fun comprovarTipus(deQue: String, vararg tipusValids: String): String {
     } while (!valid)
     return tipus
 }
+fun ordenarLista(llista:MutableList<Int>):MutableList<Int>{
+    var result=mutableListOf<Int>()
+    if (llista.size>1){
+        var subListOne= llista.subList(0,llista.size/2)
+        var subListTwo= llista.subList(llista.size/2,llista.size)
+        ordenarLista(subListOne)
+        ordenarLista(subListTwo)
+        if (subListOne[0]>subListTwo[0]){
+            result.add(subListTwo[0])
+            result.add(subListOne[0])
+        }else{
+            result.add(subListOne[0])
+            result.add(subListTwo[0])
+        }
+        print(subListOne)
+        println(subListTwo)
+    }
+    return result
+}
 
 fun printMatrix(array:Array<Array<Int>>){
     for (i in array.indices) {
