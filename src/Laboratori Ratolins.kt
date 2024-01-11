@@ -5,8 +5,8 @@ import java.util.*
 fun laboratoriRatolins(anys: Int): Long {
     tailrec fun calcularParelles(mesosRestants: Int, ratolins: Long): Long {
         val parellesFertils = ratolins / 2
-        if (mesosRestants == 1) {
-            return parellesFertils
+        if (mesosRestants == 0) {
+            return parellesFertils/2
         }
         val nousRatolins = parellesFertils * 2
 
@@ -19,7 +19,7 @@ fun laboratoriRatolins(anys: Int): Long {
 fun laboratoriRatolinsMesos(mesos: Int): Long {
     tailrec fun calcularParelles(mesosRestants: Int, ratolins: Long): Long {
         val parellesFertils = ratolins / 2
-        if (mesosRestants == 1) {
+        if (mesosRestants == 0) {
             return parellesFertils
         }
         val nousRatolins = parellesFertils * 2
