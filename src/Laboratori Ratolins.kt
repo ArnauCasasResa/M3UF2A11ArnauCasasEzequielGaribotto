@@ -1,5 +1,6 @@
-val numMesos = 12
+
 fun laboratoriRatolins(anys:Int): Long {
+    val numMesos = 12
     tailrec fun laboratoriRatolins(mesos: Int, actual: Long, seguent: Long): Long {
         if (mesos == 0) return actual
         return laboratoriRatolins(mesos - 1, seguent, actual + seguent)
@@ -13,5 +14,6 @@ fun main() {
         val ratolins = laboratoriRatolins(anys)
         println(ratolins)
         anys = comprovar("anys")
+        println("Insereix ${"-1"} per sortir.")
     }
 }

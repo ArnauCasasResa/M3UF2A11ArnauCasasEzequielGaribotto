@@ -41,16 +41,14 @@ fun addNumerosOrden(izquierda: MutableList<Int>,
 
 fun main() {
     val llista= mutableListOf<Int>()
-    llista.add(comprovar("numero"))
-    var numero = 0
+    var numero = comprovar("numero")
     while (numero != -1){
-        numero = comprovar("numero")
         llista.add(numero)
-        println("Insereix -1 per parar")
+        println("Insereix ${"-1"} per sortir.")
+        numero = comprovar("numero")
     }
-    llista.removeAt(llista.lastIndex)
-    println("Llista original:$llista")
+    println("Llista original: $llista")
     val llistaOrdenada:MutableList<Int> = mergeSort(llista)
-    println("Llista ordenada:$llistaOrdenada")
+    println("Llista ordenada: $llistaOrdenada")
 }
 
