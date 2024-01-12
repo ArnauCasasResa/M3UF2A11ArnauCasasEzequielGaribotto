@@ -21,17 +21,34 @@ fun comprovar(nom: String, rangMin: Int = Int.MIN_VALUE, rangMax: Int = Int.MAX_
     }
     return input
 }
-
-fun printMatrix(array:Array<Array<Int>>){
-    for (i in array.indices) {
-        for (j in array[i].indices) {
-            print("${array[i][j]} ")
+/**
+ * @author Ezequiel Garibotto
+ * @since 12/JAN/2024
+ *
+ * Procediment que imprimeix una matriu
+ *
+ * @param matriu matriu que es vol imprimir
+ *
+ */
+fun printMatrix(matriu:Array<Array<Int>>){
+    // No cal fer tests, ja que no modifica cap valor, només imprimeix la matriu.
+    for (i in matriu.indices) {
+        for (j in matriu[i].indices) {
+            print("${matriu[i][j]} ")
         }
         println()
     }
 }
 
-
+/**
+ * Funció tail recursive de fibonacci
+ *
+ * @param n número del qual es vol conèixer el seu fibonacci
+ *
+ * @return fibonacci d'n
+ *
+ * Funció treta dels apunts de classe, la utilitzem per fer testos.
+ */
 fun fibonacci(n:Int): Long {
     tailrec fun fibonacci(n: Int, actual: Long, seguent: Long): Long {
         if (n == 0) return actual

@@ -88,7 +88,7 @@ fun main() {
     var numero = comprovar("numero")
     while (numero != -1){
         llista.add(numero)
-        println("Insereix ${"-1"} per sortir.")
+        println("Insereix -1 per sortir.")
         numero = comprovar("numero")
     }
     println("Llista original: $llista")
