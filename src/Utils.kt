@@ -59,12 +59,12 @@ fun printMatrix(array:Array<Array<Int>>){
         println()
     }
 }
-fun mergesort(llista: MutableList<Int>) : MutableList<Int> {
+fun mergeSort(llista: MutableList<Int>) : MutableList<Int> {
     var llistaOrdenada= mutableListOf<Int>()
     val mitadLeft = llista.subList(0,llista.size/2)
     val mitadRight = llista.subList(llista.size/2, llista.size)
     if (llista.size <= 1) llistaOrdenada = llista
-    else llistaOrdenada = ordenarLlista(mergesort(mitadLeft), mergesort(mitadRight))
+    else llistaOrdenada = ordenarLlista(mergeSort(mitadLeft), mergeSort(mitadRight))
     return llistaOrdenada
 }
 

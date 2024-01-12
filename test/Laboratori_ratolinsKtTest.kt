@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions.*
 class Laboratori_ratolinsKtTest {
 
     @Test
-    fun paintRegion() {
+    fun laboratoriRatolins() {
         val arrayInput = arrayOf(
             arrayOf(0, 1, 1, 1, 0, 1, 0, 0),
             arrayOf(0, 0, 1, 0, 0, 1, 0, 1),

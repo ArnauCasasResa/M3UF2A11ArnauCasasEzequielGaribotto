@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.Assertions.*
-import org.testng.annotations.Test
-import org.testng.internal.junit.ArrayAsserts.assertArrayEquals
+import org.junit.jupiter.api.Test
 
 class MergesortKtTest {
 
@@ -8,12 +7,12 @@ class MergesortKtTest {
     fun paintRegion() {
         repeat(3) {
             val tamanyoRandom = (1..15).random()
-            val listaperuana = mutableListOf(tamanyoRandom)
-            for (i in listaperuana.indices){
-                listaperuana.add((-1000..1000).random())
+            val lista = mutableListOf(tamanyoRandom)
+            for (i in lista.indices){
+                lista.add((-1000..1000).random())
             }
-            val listaEsperadaPeruana=listaperuana.sorted()
-            val listaOrdenada = mergesort(listaperuana)
+            val listaEsperadaPeruana=lista.sorted()
+            val listaOrdenada = mergeSort(lista)
             assertArrayEquals(listaEsperadaPeruana.toIntArray(),listaOrdenada.toIntArray())
         }
     }

@@ -10,6 +10,6 @@ fun main() {
     }
     llista.removeAt(llista.lastIndex)
     println("Llista original:$llista")
-    val llistaOrdre:MutableList<Int> = mergesort(llista)
+    val llistaOrdre:MutableList<Int> = mergeSort(llista)
     println("Llista ordenada:$llistaOrdre")
 }
