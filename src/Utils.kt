@@ -51,28 +51,6 @@ fun comprovarTipus(deQue: String, vararg tipusValids: String): String {
     } while (!valid)
     return tipus
 }
-fun ordenarLista(llista:MutableList<Int>):MutableList<Int>{
-    var subListOne= mutableListOf<Int>()
-    var subListTwo=mutableListOf<Int>()
-    var result=mutableListOf<Int>()
-    if (llista.size>1){
-        subListOne= llista.subList(0,llista.size/2)
-        subListTwo= llista.subList(llista.size/2,llista.size)
-        ordenarLista(subListOne)
-        ordenarLista(subListTwo)
-        print(subListOne)
-        println(subListTwo)
-    }
-    if (subListOne[0]>subListTwo[0]){
-        result.add(subListTwo[0])
-        result.add(subListOne[0])
-    }else{
-        result.add(subListOne[0])
-        result.add(subListTwo[0])
-    }
-    return result
-}
-
 fun printMatrix(array:Array<Array<Int>>){
     for (i in array.indices) {
         for (j in array[i].indices) {
@@ -80,4 +58,44 @@ fun printMatrix(array:Array<Array<Int>>){
         }
         println()
     }
+}
+fun partirLista(llista: MutableList<Int>) : MutableList<Int> {
+    var llistaOrdenada= mutableListOf<Int>()
+    val mitadLeft = llista.subList(0,llista.size/2)
+    val mitadRight = llista.subList(llista.size/2, llista.size)
+    if (llista.size <= 1) llistaOrdenada = llista
+    else llistaOrdenada = ordenarLlista(partirLista(mitadLeft), partirLista(mitadRight))
+    return llistaOrdenada
+}
+
+fun ordenarLlista(izquierda: MutableList<Int>, derecha: MutableList<Int>):MutableList<Int> {
+    var llistaCompleta= mutableListOf<Int>()
+    val iteradores=addNumerosOrden(izquierda,derecha,llistaCompleta)
+    llistaSola(iteradores.first,izquierda,llistaCompleta)
+    llistaSola(iteradores.second,derecha,llistaCompleta)
+    return llistaCompleta
+}
+
+fun llistaSola(iterador:Int,llista:MutableList<Int>,llistaFinal:MutableList<Int>){
+    var i =iterador
+    while (i < llista.size) {
+        llistaFinal.add(llista[i])
+        i++
+    }
+}
+fun addNumerosOrden(izquierda: MutableList<Int>,
+                    derecha: MutableList<Int>, completa:MutableList<Int>):Pair<Int,Int>{
+    var iIzquierda=0
+    var iDerecha=0
+    while (iIzquierda < izquierda.size && iDerecha < derecha.size) {
+        if (izquierda[iIzquierda] < derecha[iDerecha]) {
+            completa.add(izquierda[iIzquierda])
+            iIzquierda++
+        }
+        else {
+            completa.add(derecha[iDerecha])
+            iDerecha++
+        }
+    }
+    return Pair(iIzquierda,iDerecha)
 }
