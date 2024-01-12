@@ -3,35 +3,17 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 
 class Laboratori_ratolinsKtTest {
-
+    val testCases = 100
+    val months = 12
     @Test
     fun laboratoriRatolins() {
-        val arrayInput = arrayOf(
-            arrayOf(0, 1, 1, 1, 0, 1, 0, 0),
-            arrayOf(0, 0, 1, 0, 0, 1, 0, 1),
-            arrayOf(0, 1, 1, 1, 0, 1, 0, 1),
-            arrayOf(0, 1, 1, 0, 0, 1, 0, 0),
-            arrayOf(0, 0, 1, 1, 0, 1, 1, 1),
-            arrayOf(0, 0, 0, 0, 0, 1, 0, 0),
-            arrayOf(1, 1, 1, 1, 1, 1, 1, 0),
-            arrayOf(0, 0, 0, 0, 0, 1, 0, 0)
-        )
+        val fibStep12: MutableList<Long> = mutableListOf()
+        for (num in 0..testCases * months step months) {
+            fibStep12.add(fibonacci(num))
+        }
 
-        val x = 3
-        val y = 3
-
-        paintRegion(arrayInput,x-1,y-1)
-
-        val expectedArray = arrayOf(
-            arrayOf(0, 2, 2, 2, 0, 1, 0, 0),
-            arrayOf(0, 0, 2, 0, 0, 1, 0, 1),
-            arrayOf(0, 2, 2, 2, 0, 1, 0, 1),
-            arrayOf(0, 2, 2, 0, 0, 1, 0, 0),
-            arrayOf(0, 0, 2, 2, 0, 1, 1, 1),
-            arrayOf(0, 0, 0, 0, 0, 1, 0, 0),
-            arrayOf(1, 1, 1, 1, 1, 1, 1, 0),
-            arrayOf(0, 0, 0, 0, 0, 1, 0, 0))
-
-        assertArrayEquals(expectedArray,arrayInput)
+        for (any in 0.. testCases) {
+            assertEquals(fibStep12[any], laboratoriRatolins(any))
+        }
     }
 }

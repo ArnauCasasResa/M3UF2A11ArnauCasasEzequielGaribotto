@@ -1,4 +1,3 @@
-import java.util.*
 val MaxCostatArray = 20
 fun paintRegion(matriu: Array<Array<Int>>, x: Int, y: Int): Array<Array<Int>> {
     if (x < 0 || x >= matriu.size || y < 0 || y >= matriu[0].size || matriu[x][y] != 1) {
