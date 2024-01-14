@@ -16,7 +16,7 @@ class MergeSortKtTest {
                 }
                 val listaEsperada = lista.sorted()
                 mergeSort(lista)
-                assertArrayEquals(listaEsperada.toIntArray(), lista.toIntArray())
+                assertIterableEquals(listaEsperada, lista, "Las listas no son iguales")
             }
         }
     }

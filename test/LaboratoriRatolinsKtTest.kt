@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
+import java.math.BigInteger
 
 class LaboratoriRatolinsKtTest {
     @Test
@@ -8,7 +9,7 @@ class LaboratoriRatolinsKtTest {
     fun laboratoriRatolins() {
         val testCases = 100
         val months = 12
-        val fibStep12: MutableList<Long> = mutableListOf()
+        val fibStep12: MutableList<BigInteger> = mutableListOf()
         for (num in 0..testCases * months step months) {
             fibStep12.add(fibonacci(num))
         }

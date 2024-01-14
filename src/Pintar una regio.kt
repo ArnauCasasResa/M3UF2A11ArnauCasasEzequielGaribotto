@@ -22,6 +22,7 @@ fun pintarRegio(matriu: Array<Array<Int>>, posX: Int, posY: Int) {
         pintarRegio(matriu, posX, posY - 1)
     }
 }
+
 val matriu = arrayOf(
     arrayOf(0, 1, 1, 1, 0, 1, 0, 0),
     arrayOf(0, 0, 1, 0, 0, 1, 0, 1),
@@ -34,18 +35,19 @@ val matriu = arrayOf(
 )
 
 fun main() {
-    var posX = 1
-    var posY = 1
     // 3, 3
     // 7, 1
     // 2, 8
-    while (posX !in -1..0 && posY !in -1..0) {
+    do {
         imprimirMatriuColor(matriu)
         println("Aquesta és la matriu, escull les coordenades a les que vols pintar una regió.")
-        posX = comprovar("fila", 1, matriu.size)
-        posY = comprovar("columna", 1, matriu[0].size)
+        val posX = comprovar("fila", 1, matriu.size)
+        val posY = comprovar("columna", 1, matriu[0].size)
         pintarRegio(matriu, posX - 1, posY - 1)
         imprimirMatriuColor(matriu)
         println("Aquesta és la matriu resultant de intentar pintar una regió a la posició ($posX,$posY)\n")
-    }
+        println("Vols continuar? S/N")
+        val resposta = comprovarTipus("resposta","S","N")
+        val continuar = resposta == "S"
+    } while (continuar)
 }

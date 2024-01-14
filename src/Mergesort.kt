@@ -3,14 +3,12 @@
  * @author Arnau Casas
  * @since 12/GEN/2024
  *
- * Aquesta funció rep una llista mutable d'enters i la divideix en dues parts. Després,
+ * Aquest procediment rep una llista mutable d'enters i la divideix en dues parts. Després,
  * crida la funció "merge" recursivament amb les dues meitats de la llista.
  *
- * @param llista Llista mutable d'enters que es vol ordenar.
+ * @param llista Llista mutable d'enters que es vol dividir.
  *
  * @see merge
- *
- * @return La llista ordenada.
  */
 fun mergeSort(llista: MutableList<Int>){
     if (llista.size <= 1) return
@@ -26,13 +24,10 @@ fun mergeSort(llista: MutableList<Int>){
  * @author Arnau Casas
  * @since 12/GEN/2024
  *
- * Aquesta funció rep dues meitats i les fusiona
- *
+ * Aquest procediment rep dues meitats de llistes mutables d'enters i les fusiona de manera ascendent.
  *
  * @param meitatEsquerra Meitat esquerra de la llista mutable d'enters.
  * @param meitatDreta Meitat dreta de la llista mutable d'enters.
- *
- * @return La llista ordenada que conté els elements de les dues meitats.
  */
 fun merge(meitatEsquerra: MutableList<Int>, meitatDreta: MutableList<Int>, llista: MutableList<Int>) {
     var iEsquerra = 0
