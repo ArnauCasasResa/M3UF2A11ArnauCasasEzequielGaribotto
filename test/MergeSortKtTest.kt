@@ -15,8 +15,8 @@ class MergeSortKtTest {
                     lista.add((-1000..1000).random())
                 }
                 val listaEsperada = lista.sorted()
-                val listaOrdenada = mergeSort(lista)
-                assertArrayEquals(listaEsperada.toIntArray(), listaOrdenada.toIntArray())
+                mergeSort(lista)
+                assertArrayEquals(listaEsperada.toIntArray(), lista.toIntArray())
             }
         }
     }
