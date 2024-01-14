@@ -3,84 +3,95 @@
  * @author Arnau Casas
  * @since 12/GEN/2024
  *
- * Aquesta funcio a la cual li has introduit una llista de numeros, te la dividira entr dos.
+ * Aquesta funció rep una llista mutable d'enters i la divideix en dues parts. Després,
+ * crida la funció "ordenarLlista" recursivament amb les dues meitats de la llista.
  *
- * @param llista llista mutable amb enters
+ * @param llista Llista mutable d'enters que es vol ordenar.
  *
- * @return  la llista ordenada
+ * @see ordenarLlista
+ *
+ * @return La llista ordenada.
  */
-fun mergeSort(llista: MutableList<Int>) : MutableList<Int> {
-    val llistaOrdenada:MutableList<Int>
-    val mitadLeft = llista.subList(0,llista.size/2)
-    val mitadRight = llista.subList(llista.size/2, llista.size)
-    if (llista.size <= 1) llistaOrdenada = llista
-    else llistaOrdenada = ordenarLlista(mergeSort(mitadLeft), mergeSort(mitadRight))
+fun mergeSort(llista: MutableList<Int>): MutableList<Int> {
+    val llistaOrdenada: MutableList<Int>
+    val meitatEsquerra = llista.subList(0, llista.size / 2)
+    val meitatDreta = llista.subList(llista.size / 2, llista.size)
+
+    if (llista.size <= 1) {
+        llistaOrdenada = llista
+    } else {
+        llistaOrdenada = ordenarLlista(mergeSort(meitatEsquerra), mergeSort(meitatDreta))
+    }
+
     return llistaOrdenada
 }
+
 /**
  * @author Arnau Casas
  * @since 12/GEN/2024
  *
- * Aquesta funcio a la cual li has introduit una llista de numeros, te'ls ordenarà de més petit a més gran.
+ * Aquesta funció rep dues meitats de la llista i crida altres funcions per ordenar-les i combinar-les.
  *
- * @param izquierda llista mutable amb enters
- * @param derecha llista mutable amb enters
+ * @see addNumerosOrden
+ * @see llistaSola
  *
- * @return  la llista ordenada
+ * @param meitatEsquerra Meitat esquerra de la llista mutable d'enters.
+ * @param meitatDreta Meitat dreta de la llista mutable d'enters.
+ *
+ * @return La llista ordenada que conté els elements de les dues meitats.
  */
-fun ordenarLlista(izquierda: MutableList<Int>, derecha: MutableList<Int>):MutableList<Int> {
-    val llistaCompleta= mutableListOf<Int>()
-    val iteradores=addNumerosOrden(izquierda,derecha,llistaCompleta)
-    llistaSola(iteradores.first,izquierda,llistaCompleta)
-    llistaSola(iteradores.second,derecha,llistaCompleta)
+fun ordenarLlista(meitatEsquerra: MutableList<Int>, meitatDreta: MutableList<Int>): MutableList<Int> {
+    val llistaCompleta = mutableListOf<Int>()
+    val iteradores = addNumerosOrden(meitatEsquerra, meitatDreta, llistaCompleta)
+    llistaSola(iteradores.first, meitatEsquerra, llistaCompleta)
+    llistaSola(iteradores.second, meitatDreta, llistaCompleta)
     return llistaCompleta
 }
+
 /**
  * @author Arnau Casas
  * @since 12/GEN/2024
  *
- * Aquesta funcio afegirà el número més petit entre dues llistes.
+ * Aquesta funció itera entre dues llistes per afegir els elements de manera ordenada a una altra llista.
  *
- * @param iterador nombre enter per iterar dins de la llista
- * @param llista llista mutable amb enters
- * @param llistaFinal llista mutable amb enters
+ * @param meitatEsquerra Meitat esquerra de la llista mutable d'enters.
+ * @param meitatDreta Meitat dreta de la llista mutable d'enters.
+ * @param llistaCompleta Llista mutable d'enters que contendrà els elements ordenats.
  *
- * @return  la llista amb els numeros ordenats
+ * @return Una parella amb la última posició de cada una de les llistes.
  */
-fun llistaSola(iterador:Int,llista:MutableList<Int>,llistaFinal:MutableList<Int>){
-    var i =iterador
-    while (i < llista.size) {
-        llistaFinal.add(llista[i])
+fun addNumerosOrden(meitatEsquerra: MutableList<Int>, meitatDreta: MutableList<Int>, llistaCompleta: MutableList<Int>): Pair<Int, Int> {
+    var iEsquerra = 0
+    var iDreta = 0
+
+    while (iEsquerra < meitatEsquerra.size && iDreta < meitatDreta.size) {
+        if (meitatEsquerra[iEsquerra] < meitatDreta[iDreta]) {
+            llistaCompleta.add(meitatEsquerra[iEsquerra])
+            iEsquerra++
+        } else {
+            llistaCompleta.add(meitatDreta[iDreta])
+            iDreta++
+        }
+    }
+    return Pair(iEsquerra, iDreta)
+}
+
+/**
+ * @author Arnau Casas
+ * @since 12/GEN/2024
+ *
+ * Aquesta funció afegeix el nombre més petit entre dues llistes a una llista final.
+ *
+ * @param iterador Nombre enter per iterar dins de la llista.
+ * @param meitat Llista mutable d'enters.
+ * @param llistaFinal Llista mutable d'enters que contendrà els elements ordenats.
+ */
+fun llistaSola(iterador: Int, meitat: MutableList<Int>, llistaFinal: MutableList<Int>) {
+    var i = iterador
+    while (i < meitat.size) {
+        llistaFinal.add(meitat[i])
         i++
     }
-}
-/**
- * @author Arnau Casas
- * @since 12/GEN/2024
- *
- * Aquesta funcio iterarà entre dues llistes per afegir amb ordre dins d'un altre llista que sera la definitiva.
- *
- * @param izquierda llista mutable amb enters
- * @param derecha llista mutable amb enters
- * @param completa llista mutable amb enters
- *
- * @return un pair de la ultima posicio de cada una de les lista
- */
-fun addNumerosOrden(izquierda: MutableList<Int>,
-                    derecha: MutableList<Int>, completa:MutableList<Int>):Pair<Int,Int>{
-    var iIzquierda=0
-    var iDerecha=0
-    while (iIzquierda < izquierda.size && iDerecha < derecha.size) {
-        if (izquierda[iIzquierda] < derecha[iDerecha]) {
-            completa.add(izquierda[iIzquierda])
-            iIzquierda++
-        }
-        else {
-            completa.add(derecha[iDerecha])
-            iDerecha++
-        }
-    }
-    return Pair(iIzquierda,iDerecha)
 }
 
 fun main() {

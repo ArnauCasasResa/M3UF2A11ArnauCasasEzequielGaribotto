@@ -3,7 +3,8 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 
 class PintarRegioKtTest {
-
+    // Podrem fer l'arrayInput com a valor constant, però ho redefinirem per cada test
+    // per millorar la llegibilitat.
     @Test
     fun pintarRegio1() {
         val arrayInput = arrayOf(
