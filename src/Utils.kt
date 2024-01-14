@@ -30,11 +30,15 @@ fun comprovar(nom: String, rangMin: Int = Int.MIN_VALUE, rangMax: Int = Int.MAX_
  * @param matriu matriu que es vol imprimir
  *
  */
-fun printMatrix(matriu:Array<Array<Int>>){
+fun imprimirMatriuColor(matriu:Array<Array<Int>>){
     // No cal fer tests, ja que no modifica cap valor, només imprimeix la matriu.
-    for (i in matriu.indices) {
-        for (j in matriu[i].indices) {
-            print("${matriu[i][j]} ")
+    for (fila in matriu.indices) {
+        for (valor in matriu[fila].indices) {
+            when (matriu[fila][valor]) {
+                0 -> print("\u001B[47m \u001B[0m") // fondo blanco
+                1 -> print("\u001B[40m \u001B[0m") // fondo negro
+                2 -> print("\u001B[100m \u001B[0m") // fondo gris
+            }
         }
         println()
     }
